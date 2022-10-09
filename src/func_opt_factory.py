@@ -18,13 +18,13 @@ def get_optimizer(optimizer_name):
 
 def get_function(func_name):
     if func_name == "quadratic":
-        return f1, grad_f1, hessian_f1
+        return QuadraticFunction
 
     elif func_name == "log":
-        return f2, grad_f2, hessian_f2
+        return LogTransformFunction
 
     elif func_name == "bi_quadratic":
-        return f3, grad_f3, hessian_f3
+        return BiQuadraticFunction
 
     else:
         raise NotImplementedError(func_name + " is not implemented!")

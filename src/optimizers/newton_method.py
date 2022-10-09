@@ -4,20 +4,21 @@ import numpy.linalg as lalg
 from src.utils import grad_f_estimate
 
 
-def newton_method(f, x0, hessian_f, alpha=1e-3, max_iters=1000,
+def newton_method(f, x0, hessian, alpha=1e-4, max_iters=1000,
                   grad=None, delta1=1e-6, delta2=1e-6,
-                  display=False):
+                  display=False, **kwargs):
     x_k = x0
 
-    grad_f = lambda inp: grad_f_estimate(f, inp) if grad is None else grad(inp)
+    if not grad:
+        grad = lambda inp: grad_f_estimate(f, inp)
 
-    for i in range(max_iters):
-        grad = grad_f(x_k)
-        hessian = hessian_f(x_k)
-        p = - np.linalg.inv(hessian) @ grad
+    for k in range(max_iters):
+        grad_k = grad(x_k)
+        hessian_k = hessian(x_k)
+        p = - np.linalg.inv(hessian_k) @ grad_k
 
         if display:
-            print(f"x_k: {x_k}, \nfunction: {f(x_k)}, \ngrad: {grad}\n")
+            print(f"x_k: {x_k}, \nfunction: {f(x_k)}, \ngrad: {grad_k}\n")
 
         x_k_next = x_k + alpha * p
 
@@ -26,4 +27,4 @@ def newton_method(f, x0, hessian_f, alpha=1e-3, max_iters=1000,
 
         x_k = x_k_next
 
-    return i, x_k
+    return k, x_k

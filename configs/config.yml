@@ -1,0 +1,85 @@
+#quadratic:
+#  gradient_descent:
+#    x0: null
+#    grad: False
+#    hessian: False
+#    max_iters: 5000
+#    alpha: 1.0e-4
+#    delta1: 1.0e-7
+#    delta2: 1.0e-7
+#
+#  newton_method:
+#    x0: null
+#    grad: False
+#    hessian: True
+#    max_iters: 5000
+#    alpha: 1.0e-4
+#    delta1: 1.0e-7
+#    delta2: 1.0e-7
+#
+#  quasi_newton_method:
+#    x0: null
+#    grad: False
+#    hessian: False
+#    max_iters: 5000
+#    alpha: 1.0e-4
+#    delta1: 1.0e-7
+#    delta2: 1.0e-7
+
+log:
+  gradient_descent:
+    x0: null
+    grad: False
+    hessian: False
+    alpha: 1.0e-3
+    max_iters: 5000
+    delta1: 1.0e-7
+    delta2: 1.0e-7
+
+  newton_method:
+    x0: null
+    grad: False
+    hessian: True
+    max_iters: 5000
+    alpha: 1.0e-2
+    delta1: 1.0e-7
+    delta2: 1.0e-7
+
+  quasi_newton_method:
+    x0: null
+    grad: False
+    hessian: False
+    max_iters: 5000
+    alpha: 1.0e-3
+    delta1: 1.0e-7
+    delta2: 1.0e-7
+
+#bi_quadratic:
+#  gradient_descent:
+#    x0: [2, 2]
+#    grad: False
+#    hessian: False
+#    max_iters: 10000
+#    alpha: 1.0e-3
+#    delta1: 1.0e-7
+#    delta2: 1.0e-7
+#
+#  newton_method:
+#    x0: [2, 2]
+#    grad: False
+#    hessian: True
+#    max_iters: 10000
+#    alpha: 9.0e-1
+#    delta1: 1.0e-7
+#    delta2: 1.0e-7
+#
+#  quasi_newton_method:
+#    x0: [2, 2]
+#    grad: False
+#    hessian: False
+#    max_iters: 5000
+#    alpha: 1.0e-1
+#    delta1: 1.0e-7
+#    delta2: 1.0e-7
+
+
