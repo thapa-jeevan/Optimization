@@ -20,4 +20,4 @@ pip install -r requirements.txt
 python -m src.run
 ```
 
-You can change the configuration for running the algorithms, you can change `configs/config.yml` file.
+To change the configuration for running the algorithms, you can update the `configs/config.yml` file.

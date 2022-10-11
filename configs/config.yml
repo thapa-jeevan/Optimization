@@ -4,7 +4,6 @@ quadratic:
     grad: True
     hessian: False
     max_iters: 5000
-    alpha: 1.0e-4
     delta1: 1.0e-7
     delta2: 1.0e-7
 
@@ -13,7 +12,6 @@ quadratic:
     grad: True
     hessian: True
     max_iters: 5000
-    alpha: 1.0e-4
     delta1: 1.0e-7
     delta2: 1.0e-7
 
@@ -22,7 +20,6 @@ quadratic:
     grad: True
     hessian: False
     max_iters: 5000
-    alpha: 1.0e-4
     delta1: 1.0e-7
     delta2: 1.0e-7
 
@@ -31,7 +28,6 @@ log:
     x0: null
     grad: True
     hessian: False
-    alpha: 1.0e-3
     max_iters: 5000
     delta1: 1.0e-7
     delta2: 1.0e-7
@@ -41,7 +37,6 @@ log:
     grad: True
     hessian: True
     max_iters: 5000
-    alpha: 1.0e-2
     delta1: 1.0e-7
     delta2: 1.0e-7
 
@@ -50,7 +45,6 @@ log:
     grad: True
     hessian: False
     max_iters: 5000
-    alpha: 1.0e-3
     delta1: 1.0e-7
     delta2: 1.0e-7
 
@@ -60,7 +54,6 @@ bi_quadratic:
     grad: True
     hessian: False
     max_iters: 10000
-    alpha: 1.0e-3
     delta1: 1.0e-7
     delta2: 1.0e-7
 
