@@ -25,7 +25,7 @@ class QuadraticFunction:
         if x0:
             x0 = np.array(x0).reshape(-1, 1)
         else:
-            x0 = np.random.randint(2, 5, (n, 1))
+            x0 = np.random.randint(1, 333, (n, 1)) + .1
         return x0
 
 

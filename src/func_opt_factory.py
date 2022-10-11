@@ -12,6 +12,9 @@ def get_optimizer(optimizer_name):
     elif optimizer_name == "quasi_newton_method":
         return quasi_newton_method
 
+    elif optimizer_name == "adam_optimizer":
+        return adam_optimizer
+
     else:
         raise NotImplementedError(optimizer_name + " is not implemented!")
 

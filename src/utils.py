@@ -1,5 +1,6 @@
 import os
 
+import matplotlib.pyplot as plt
 import numpy as np
 import yaml
 
@@ -24,7 +25,7 @@ def grad_f_estimate(f, x, h=1e-5, order=1):
     return grad.reshape(-1, 1)
 
 
-def line_search(x_k, p_k, f, grad, alpha0=2, c_=0.9, decrement_ratio = 0.75, max_iters=100):
+def line_search(x_k, p_k, f, grad, alpha0=1, c_=0.1, decrement_ratio=0.5, max_iters=100):
     alpha_k = alpha0
 
     slope = c_ * p_k.T @ grad(x_k)
@@ -71,4 +72,25 @@ def dump_result(func_, opt_, result):
     with open(file_path, "w") as f:
         f.write(f"iter: {iter_}\n\n")
         f.write(f"fx_final:{fx_final}\n\n")
+        f.write(f"min_x:{x_final.min()}  max_x:{x_final.max()}\n\n")
         f.write(f"final_x:{x_final}")
+
+
+def visualize(fx_ls, func_):
+    font = {'size': 20}
+    plt.rc('font', **font)
+    file_path = os.path.join(REPORTS_DIR, "graphs", f"{func_}_graph.jpg")
+    os.makedirs(os.path.dirname(file_path), exist_ok=True)
+    plt.figure(figsize=(10, 7))
+
+    for opt_, fx_ls_ in fx_ls.items():
+        plt.plot(fx_ls_, linewidth=3)
+    for opt_, fx_ls_ in fx_ls.items():
+        plt.scatter(len(fx_ls_) - 1, fx_ls_[-1], linewidth=5, marker="o")
+
+    plt.title(func_)
+    plt.xlabel("#Iteration (k)")
+    plt.ylabel("f(x_k)")
+    plt.legend(fx_ls.keys())
+    plt.savefig(file_path)
+    plt.show()
