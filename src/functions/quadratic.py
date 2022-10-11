@@ -5,7 +5,7 @@ class QuadraticFunction:
     @staticmethod
     def f(x):
         n, _ = x.shape
-        fx = (np.arange(1, n + 1) * (x ** 2)).sum()
+        fx = np.arange(1, n + 1) @ (x ** 2)
         return fx
 
     @staticmethod
@@ -27,3 +27,10 @@ class QuadraticFunction:
         else:
             x0 = np.random.randint(2, 5, (n, 1))
         return x0
+
+
+# if __name__ == '__main__':
+#     qf = QuadraticFunction()
+#     x = np.arange(1, 5).reshape(-1, 1)
+#     print(qf.f(x))
+#     assert qf.f(x) == 100

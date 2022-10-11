@@ -24,6 +24,24 @@ def grad_f_estimate(f, x, h=1e-5, order=1):
     return grad.reshape(-1, 1)
 
 
+def line_search(x_k, p_k, f, grad, alpha0=2, c_=0.9, decrement_ratio = 0.75, max_iters=100):
+    alpha_k = alpha0
+
+    slope = c_ * p_k.T @ grad(x_k)
+
+    y_intercept = f(x_k)
+    y_line = lambda x__: slope * alpha_k + y_intercept
+
+    for _ in range(max_iters):
+        x_k1 = x_k + alpha_k * p_k
+
+        if f(x_k1) < y_line(x_k1):
+            break
+        else:
+            alpha_k = alpha_k * decrement_ratio
+    return alpha_k
+
+
 def process_config(opt_func, config):
     x0 = config["x0"]
     config["x0"] = opt_func.initialize(x0)
@@ -47,9 +65,10 @@ def read_config():
 
 
 def dump_result(func_, opt_, result):
-    iter_, x_final = result
+    iter_, x_final, fx_final = result
 
     file_path = os.path.join(REPORTS_DIR, f"{func_}_{opt_}_result.txt")
     with open(file_path, "w") as f:
         f.write(f"iter: {iter_}\n\n")
+        f.write(f"fx_final:{fx_final}\n\n")
         f.write(f"final_x:{x_final}")

@@ -1,7 +1,7 @@
 import numpy as np
 import numpy.linalg as lalg
 
-from src.utils import grad_f_estimate
+from src.utils import grad_f_estimate, line_search
 
 
 def quasi_newton_method(f, x0, alpha=1e-4, max_iters=1000,
@@ -16,16 +16,24 @@ def quasi_newton_method(f, x0, alpha=1e-4, max_iters=1000,
     F_k = np.eye(n)
 
     for k in range(max_iters):
+        print(k, f(x_k))
         grad_k = grad(x_k)
-        p = - F_k @ grad_k
+        p_k = - F_k @ grad_k
 
         if display:
             print(f"x_k: {x_k}, \nfunction: {f(x_k)}, \ngrad: {grad_k}\n")
 
-        x_k_next = x_k + alpha * p
+        alpha_k = line_search(x_k, p_k, f, grad)
+        x_k_next = x_k + alpha_k * p_k
 
-        if (lalg.norm(x_k_next - x_k) < delta1) or (lalg.norm(f(x_k_next) - f(x_k)) < delta2):
+        if (lalg.norm(x_k_next - x_k) < delta1):
+            print("x change null")
             break
+
+        if (lalg.norm(f(x_k_next) - f(x_k)) < delta2):
+            print("fx change null")
+            break
+
 
         s_k = x_k_next - x_k
         y_k = grad(x_k_next) - grad_k
@@ -35,4 +43,4 @@ def quasi_newton_method(f, x0, alpha=1e-4, max_iters=1000,
 
         x_k = x_k_next
 
-    return k, x_k
+    return k, x_k, f(x_k)

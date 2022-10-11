@@ -28,10 +28,14 @@ class LogTransformFunction:
 
     def f(self, x):
         t = self.b - self.A @ x
-        print(f"\r {(t < 0).any()}\t\t", np.abs(x).max(), end="")
+        # print(f"\r {(t < 0).any()}\t\t", np.abs(x).max(), end="")
         # if np.isnan(np.abs(x).max()):
         #     exit(0)
         fx = self.c.T @ x - (np.log(self.b - self.A @ x)).sum()
+        # if (t < 0).any():
+        #     # print(fx)
+        #     import pdb
+        #     pdb.set_trace()
 
         # if np.isnan(fx).any():
         #     import pdb
@@ -42,28 +46,34 @@ class LogTransformFunction:
         return fx
 
     def grad(self, x):
-        x = x.ravel()
         grad_fx = self.c + self.A.T @ (1 / (self.b - self.A @ x))
-        return grad_fx.reshape(-1, 1)
+        return grad_fx
 
     def hessian(self, x):
-        x = x.ravel()
-        hessian = self.A.T @ np.diag(np.diag(1. / ((self.b - self.A @ x) ** 2))) @ self.A
+        hessian = self.A.T @ np.diag((1. / ((self.b - self.A @ x) ** 2)).ravel()) @ self.A
         return hessian
 
     def initialize(self, x0=None):
-        x0 = np.linalg.inv(self.A.T @ self.A) @ self.A.T @ (self.b - np.ones_like(self.b) * 10)
+        x0 = np.linalg.inv(self.A.T @ self.A) @ self.A.T @ (self.b - np.ones_like(self.b) * 20)
         return x0
 
-# if __name__ == '__main__':
-#     func_ = LogTransformFunction()
-#     x0 = func_.initialize()
-#
-#     check = func_.b - func_.A @ x0
-#     print((check < 0).any())
-#
-#     x_ = np.linalg.inv(func_.A.T @ func_.A) @ func_.A.T @ func_.b
-#     # print(x_)
+    def get_solution(self):
+        y = - 1 / (- np.linalg.inv(self.A @ self.A.T) @ self.A @ self.c)
+        return np.linalg.inv(self.A.T @ self.A) @ self.A.T @ (self.b + y)
 
-#     import pdb
-#     pdb.set_trace()
+
+if __name__ == '__main__':
+    func_ = LogTransformFunction()
+    soln = func_.get_solution()
+    print(soln)
+    print(func_.f(soln))
+    # x0 = func_.initialize()
+    #
+    # check = func_.b - func_.A @ x0
+    # print((check < 0).any())
+    #
+    # x_ = np.linalg.inv(func_.A.T @ func_.A) @ func_.A.T @ func_.b
+    # # print(x_)
+    #
+    # import pdb
+    # pdb.set_trace()
