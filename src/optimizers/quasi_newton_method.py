@@ -16,7 +16,6 @@ def quasi_newton_method(f, x0, alpha=1e-4, max_iters=1000,
     F_k = np.eye(n)
 
     for k in range(max_iters):
-        print(k, f(x_k))
         grad_k = grad(x_k)
         p_k = - F_k @ grad_k
 
@@ -26,14 +25,8 @@ def quasi_newton_method(f, x0, alpha=1e-4, max_iters=1000,
         alpha_k = line_search(x_k, p_k, f, grad)
         x_k_next = x_k + alpha_k * p_k
 
-        if (lalg.norm(x_k_next - x_k) < delta1):
-            print("x change null")
+        if (lalg.norm(x_k_next - x_k) < delta1) or (lalg.norm(f(x_k_next) - f(x_k)) < delta2):
             break
-
-        if (lalg.norm(f(x_k_next) - f(x_k)) < delta2):
-            print("fx change null")
-            break
-
 
         s_k = x_k_next - x_k
         y_k = grad(x_k_next) - grad_k

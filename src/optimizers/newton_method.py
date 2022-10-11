@@ -13,7 +13,6 @@ def newton_method(f, x0, hessian, alpha=1e-4, max_iters=1000,
         grad = lambda inp: grad_f_estimate(f, inp)
 
     for k in range(max_iters):
-        print(k, f(x_k))
         grad_k = grad(x_k)
         hessian_k = hessian(x_k)
         p_k = - np.linalg.inv(hessian_k) @ grad_k

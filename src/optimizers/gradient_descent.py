@@ -12,7 +12,6 @@ def gradient_descent(f, x0, alpha=None, max_iters=1000,
         grad = lambda inp: grad_f_estimate(f, inp)
 
     for k in range(max_iters):
-        print(k, f(x_k))
         p_k = - grad(x_k)
 
         if display:

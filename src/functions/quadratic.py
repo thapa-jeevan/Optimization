@@ -6,7 +6,7 @@ class QuadraticFunction:
     def f(x):
         n, _ = x.shape
         fx = np.arange(1, n + 1) @ (x ** 2)
-        return fx
+        return np.squeeze(fx)
 
     @staticmethod
     def grad(x):
@@ -29,8 +29,8 @@ class QuadraticFunction:
         return x0
 
 
-# if __name__ == '__main__':
-#     qf = QuadraticFunction()
-#     x = np.arange(1, 5).reshape(-1, 1)
-#     print(qf.f(x))
-#     assert qf.f(x) == 100
+if __name__ == '__main__':
+    qf = QuadraticFunction()
+    x = np.arange(1, 5).reshape(-1, 1)
+    print(qf.f(x))
+    assert qf.f(x) == 100

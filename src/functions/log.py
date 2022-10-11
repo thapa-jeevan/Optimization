@@ -43,7 +43,7 @@ class LogTransformFunction:
         #     exit(0)
         # print(np.abs(fx).max())
 
-        return fx
+        return np.squeeze(fx)
 
     def grad(self, x):
         grad_fx = self.c + self.A.T @ (1 / (self.b - self.A @ x))
