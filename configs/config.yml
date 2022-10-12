@@ -1,7 +1,7 @@
 quadratic:
   gradient_descent:
     x0: null
-    grad: True
+    grad: False
     hessian: False
     max_iters: 5000
     delta1: 1.0e-5
@@ -25,7 +25,7 @@ quadratic:
 
 #  adam_optimizer:
 #    x0: null
-#    grad: True
+#    grad: False
 #    hessian: False
 #    max_iters: 5000
 #    delta1: 1.0e-5

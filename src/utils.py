@@ -92,5 +92,6 @@ def visualize(fx_ls, func_):
     plt.xlabel("#Iteration (k)")
     plt.ylabel("f(x_k)")
     plt.legend(fx_ls.keys())
+    # plt.yscale("log")
     plt.savefig(file_path)
     plt.show()
