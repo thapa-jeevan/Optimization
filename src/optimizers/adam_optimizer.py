@@ -31,8 +31,9 @@ def adam_optimizer(f, x0, max_iters=1000, alpha=None,
 
         s = rho1 * s + (1 - rho1) * g
         r = rho2 * r + (1 - rho2) * g ** 2
-
-        # r = r + g ** 2
+        
+#         s = rho1 * s + g
+#         r = r + g ** 2
 
         s_ = s / (1 - rho1 ** (k + 1))
         r_ = r / (1 - rho2 ** (k + 1))
@@ -41,7 +42,9 @@ def adam_optimizer(f, x0, max_iters=1000, alpha=None,
             print(f"x_k: {x_k}, \nfunction: {f(x_k)}, \ngrad: {g}\n")
 
         p_k = - s_ / (np.sqrt(r_) + delta)
-        # p_k = - g / (np.sqrt(r) + delta)
+#         p_k = - g / (np.sqrt(r) + delta)
+#         p_k = - s
+    
 
         alpha_k = line_search(x_k, p_k, f, grad, alpha0=alpha) if use_line_search else alpha
         x_k_next = x_k + alpha_k * p_k

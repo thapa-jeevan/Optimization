@@ -3,6 +3,7 @@ from src.utils import grad_f_estimate, line_search
 
 
 def gradient_descent(f, x0, alpha=1, max_iters=1000,
+                     use_line_search=True,
                      grad=None, delta1=1e-6, delta2=1e-6,
                      display=False, **kwargs):
     x_k = x0
@@ -18,12 +19,11 @@ def gradient_descent(f, x0, alpha=1, max_iters=1000,
 
         p_k = - grad(x_k)
 
-        alpha_k = line_search(x_k, p_k, f, grad, alpha)
-
+        alpha_k = line_search(x_k, p_k, f, grad, alpha0=alpha) if use_line_search else alpha
+        x_k_next = x_k + alpha_k * p_k
+        
         if display:
             print(f"x_k: {x_k}, \nfunction: {f(x_k)}, \nmov: {p_k}\n, \nalpha:{alpha_k} \n")
-
-        x_k_next = x_k + alpha_k * p_k
 
         if (np.linalg.norm(x_k_next - x_k) < delta1):
             print("No x movement")

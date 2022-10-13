@@ -23,6 +23,9 @@ def get_function(func_name):
     if func_name == "quadratic":
         return QuadraticFunction
 
+    elif func_name == "quadratic2":
+        return Quadratic2Function
+        
     elif func_name == "log":
         return LogTransformFunction
 

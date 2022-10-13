@@ -4,38 +4,36 @@ quadratic:
     grad: False
     hessian: False
     max_iters: 5000
-    delta1: 1.0e-5
+    delta1: 1.0e-7
     delta2: 1.0e-5
-    alpha: 5
-
+    alpha: 4
 
   newton_method:
     x0: null
     grad: True
     hessian: True
     max_iters: 5000
-    delta1: 1.0e-5
+    delta1: 1.0e-7
     delta2: 1.0e-5
+    alpha: 4
 
   quasi_newton_method:
     x0: null
     grad: True
     hessian: False
     max_iters: 5000
-    delta1: 1.0e-5
+    delta1: 1.0e-7
     delta2: 1.0e-5
-    alpha: 5
-
+    alpha: 4
 
   adam_optimizer:
     x0: null
     grad: False
     hessian: False
     max_iters: 5000
-    delta1: 1.0e-5
+    delta1: 1.0e-7
     delta2: 1.0e-5
-    alpha: 5
-
+    alpha: 4
 
 log:
   gradient_descent:
@@ -43,47 +41,43 @@ log:
     grad: True
     hessian: False
     max_iters: 5000
-    delta1: 1.0e-5
+    delta1: 1.0e-7
     delta2: 1.0e-5
-    alpha: 5
-
+    alpha: 1
 
   newton_method:
     x0: null
     grad: True
     hessian: True
     max_iters: 5000
-    delta1: 1.0e-5
+    delta1: 1.0e-7
     delta2: 1.0e-5
-    alpha: 5
-
+    alpha: 1
 
   quasi_newton_method:
     x0: null
     grad: True
     hessian: False
     max_iters: 5000
-    delta1: 1.0e-5
+    delta1: 1.0e-7
     delta2: 1.0e-5
-    alpha: 5
-
+    alpha: 1
 
   adam_optimizer:
     x0: null
     grad: True
     hessian: False
     max_iters: 5000
-    delta1: 1.0e-5
+    delta1: 1.0e-7
     delta2: 1.0e-5
-    alpha: 5
-
+    alpha: 0.9
 
 bi_quadratic:
   gradient_descent:
     x0: [2, 2]
     grad: True
     hessian: False
-    max_iters: 100000
+    max_iters: 5000
     delta1: 1.0e-7
     delta2: 1.0e-7
     alpha: 1
@@ -110,7 +104,7 @@ bi_quadratic:
     x0: [2, 2]
     grad: True
     hessian: False
-    max_iters: 500000
+    max_iters: 5000
     delta1: 1.0e-7
     delta2: 1.0e-7
     alpha: 0.3

@@ -54,7 +54,7 @@ class LogTransformFunction:
         return hessian
 
     def initialize(self, x0=None):
-        x0 = np.linalg.inv(self.A.T @ self.A) @ self.A.T @ (self.b - np.ones_like(self.b) * 20)
+        x0 = np.linalg.inv(self.A.T @ self.A) @ self.A.T @ (self.b - self.b.min())
         return x0
 
     def get_solution(self):
