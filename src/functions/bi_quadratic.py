@@ -6,7 +6,7 @@ class BiQuadraticFunction:
     def f(x):
         x = x.ravel()
         fx = 100 * (x[1] - x[0] ** 2) ** 2 + (1 - x[0]) ** 2
-        return fx
+        return fx * 1.0
 
     @staticmethod
     def grad(x):
@@ -15,7 +15,7 @@ class BiQuadraticFunction:
             - 400 * (x[1] - x[0] ** 2) * x[0] - 2 * (1 - x[0]),
             200 * (x[1] - x[0] ** 2)
         ])
-        return grad_fx.reshape(-1, 1)
+        return grad_fx.reshape(-1, 1) * 1.0
 
     @staticmethod
     def hessian(x):
@@ -24,7 +24,7 @@ class BiQuadraticFunction:
             [- 400 * (x[1] - 3 * x[0] ** 2) + 2, - 400 * x[0]],
             [-400 * x[0], 200]
         ])
-        return hessian
+        return hessian * 1.0
 
     @staticmethod
     def initialize(x0=None, n=2):

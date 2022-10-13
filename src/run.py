@@ -18,7 +18,7 @@ if __name__ == '__main__':
             config = process_config(opt_func, config)
 
             optimizer = get_optimizer(opt_)
-            *result, fx_ls_ = optimizer(**config)
+            *result, fx_ls_, xk_ls = optimizer(**config)
             dump_result(func_, opt_, result)
 
             fx_ls[opt_] = fx_ls_

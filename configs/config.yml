@@ -6,6 +6,8 @@ quadratic:
     max_iters: 5000
     delta1: 1.0e-5
     delta2: 1.0e-5
+    alpha: 5
+
 
   newton_method:
     x0: null
@@ -22,14 +24,18 @@ quadratic:
     max_iters: 5000
     delta1: 1.0e-5
     delta2: 1.0e-5
+    alpha: 5
 
-#  adam_optimizer:
-#    x0: null
-#    grad: False
-#    hessian: False
-#    max_iters: 5000
-#    delta1: 1.0e-5
-#    delta2: 1.0e-5
+
+  adam_optimizer:
+    x0: null
+    grad: False
+    hessian: False
+    max_iters: 5000
+    delta1: 1.0e-5
+    delta2: 1.0e-5
+    alpha: 5
+
 
 log:
   gradient_descent:
@@ -39,6 +45,8 @@ log:
     max_iters: 5000
     delta1: 1.0e-5
     delta2: 1.0e-5
+    alpha: 5
+
 
   newton_method:
     x0: null
@@ -47,6 +55,8 @@ log:
     max_iters: 5000
     delta1: 1.0e-5
     delta2: 1.0e-5
+    alpha: 5
+
 
   quasi_newton_method:
     x0: null
@@ -55,45 +65,53 @@ log:
     max_iters: 5000
     delta1: 1.0e-5
     delta2: 1.0e-5
+    alpha: 5
 
-#  adam_optimizer:
-#    x0: null
-#    grad: True
-#    hessian: False
-#    max_iters: 5000
-#    delta1: 1.0e-5
-#    delta2: 1.0e-5
+
+  adam_optimizer:
+    x0: null
+    grad: True
+    hessian: False
+    max_iters: 5000
+    delta1: 1.0e-5
+    delta2: 1.0e-5
+    alpha: 5
+
 
 bi_quadratic:
   gradient_descent:
-    x0: null
+    x0: [2, 2]
     grad: True
     hessian: False
     max_iters: 100000
     delta1: 1.0e-7
     delta2: 1.0e-7
+    alpha: 1
 
   newton_method:
-    x0: null
+    x0: [2, 2]
     grad: True
     hessian: True
     max_iters: 5000
     delta1: 1.0e-7
     delta2: 1.0e-7
+    alpha: 1
 
   quasi_newton_method:
-    x0: null
+    x0: [2, 2]
     grad: True
     hessian: False
     max_iters: 5000
     delta1: 1.0e-7
     delta2: 1.0e-7
+    alpha: 1
 
-#  adam_optimizer:
-#    x0: null
-#    grad: True
-#    hessian: False
-#    max_iters: 5000
-#    delta1: 1.0e-7
-#    delta2: 1.0e-7
-
+  adam_optimizer:
+    x0: [2, 2]
+    grad: True
+    hessian: False
+    max_iters: 500000
+    delta1: 1.0e-7
+    delta2: 1.0e-7
+    alpha: 0.3
+    use_line_search: False
